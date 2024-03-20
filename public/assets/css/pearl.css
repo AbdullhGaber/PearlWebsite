@@ -1,0 +1,227 @@
+* {
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+}
+
+body {
+    overflow-x: hidden;
+}
+
+.header-area {
+    width: 100%;
+    height: 10vh;
+    border-bottom: 1px solid black;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.main-nav {
+    display: flex;
+    align-items: center;
+}
+
+.nav {
+    display: flex;
+    justify-content: center;
+    margin-right: 9vw;
+}
+
+.main-nav li,
+.main-nav a {
+    display: inline-block;
+}
+
+.main-nav a {
+    text-decoration: none;
+    color: #000000;
+}
+
+.main-nav li {
+    margin-left: 5rem;
+    font-size: larger;
+}
+
+.logoHeader {
+    width: 5vw;
+    height: 7vh;
+    border-radius: 20%;
+    margin-left: 1.5rem;
+    margin-top: 0.5rem;
+}
+
+.menu-trigger {
+    display: none;
+    cursor: pointer;
+    margin-left: auto;
+    margin-right: 1.5rem;
+    margin-top: -2.6rem;
+}
+
+.menu-icon {
+    display: none;
+}
+
+.menu-icon {
+    font-size: 1.5rem;
+}
+
+@media only screen and (max-width: 768px) {
+    .main-nav {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .main-nav .nav {
+        display: none;
+        flex-direction: column;
+        width: 100%;
+        position: absolute;
+        background-color: #6F6FAF;
+        opacity: 95%;
+        top: 10%;
+        left: 0;
+        z-index: 0;
+    }
+
+    .main-nav .nav.show {
+        display: flex;
+    }
+
+    .main-nav .nav li {
+        margin: 10px 0;
+        text-align: center;
+        width: 100%;
+    }
+
+    .main-nav .nav li a {
+        color: #fff;
+    }
+
+    .menu-icon {
+        display: block;
+        z-index: 10000;
+    }
+
+    .logoHeader {
+        width: 25vw;
+    }
+}
+
+.btn-navy {
+    background-color: #6F6FAF;
+    color: #fff;
+    border: none;
+    border-radius: 15px;
+    cursor: pointer;
+    font-size: 18px;
+    font-weight: bold;
+}
+
+.btn-navy:hover {
+    background-color: #6666a1;
+}
+
+.btn-navy:active {
+    background-color: #606097;
+    color: #fff;
+}
+
+.container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.authWrapper {
+    background-color: #F9FAFB;
+    box-shadow: 0 0 8px rgba(0, 0, 0, 0.1);
+    width: 80%;
+    height: auto;
+    margin-top: 5rem;
+    margin-bottom: 5rem;
+    padding: 6%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+@media only screen and (max-width: 768px) {
+    .authWrapper {
+        background-color: #e9eaec;
+    }
+}
+
+.authWrapper2 {
+    background-color: #fff;
+    box-shadow: 0 0 8px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    height: auto;
+    border-radius: 6px;
+    padding: 6%;
+}
+
+.authHeader {
+    font-size: 48px;
+    text-align: center;
+    font-weight: bold;
+    color: #1e1e54;
+}
+
+.footer-area {
+    width: 100%;
+    height: 25vh;
+    border-top: 1px solid black;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.iconLink {
+    color: black;
+}
+
+.iconLink:hover {
+    color: black;
+}
+
+.footerLinks {
+    text-decoration: none;
+    color: black;
+    font-size: x-large;
+    font-weight: bold;
+}
+
+.footerLinks:hover {
+    color: black;
+}
+
+.btnGooglePlay,
+.btnAppStore {
+    width: 13vw;
+    font-size: medium;
+    font-weight: bold;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+@media only screen and (max-width: 768px) {
+    .footer-area {
+        height: auto;
+    }
+
+    .btnGooglePlay,
+    .btnAppStore {
+        width: 40vw;
+        display: inline-block;
+        margin-right: 1rem;
+        margin-left: 1rem;
+        margin-bottom: 2rem;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .footerBtns {
+        display: flex;
+        justify-content: center;
+    }
+}

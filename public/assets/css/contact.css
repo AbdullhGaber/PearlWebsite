@@ -1,0 +1,55 @@
+.container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.contactWrapper {
+    width: 80%;
+    height: auto;
+    margin-top: 5rem;
+    margin-bottom: 5rem;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    ;
+}
+
+.leftContact {
+    background-color: #F9FAFB;
+    display: flex;
+    justify-content: center;
+}
+
+.rightContact {
+    background-color: #f7f8f8;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.colorPart {
+    color: #6F6FAF;
+}
+
+#nameInput,
+#emailInput,
+#phoneInput,
+#quesInput {
+    background-color: #FCFCFC !important;
+}
+
+.contactLogo {
+    width: 10vw;
+}
+
+.contactIcons {
+    margin-left: 1.5vw;
+}
+
+@media only screen and (max-width: 768px) {
+    .contactIcons {
+        margin-left: 15vw;
+        margin-bottom: 4vh;
+    }
+
+    .contactLogo {
+        width: 30vw;
+    }
+}

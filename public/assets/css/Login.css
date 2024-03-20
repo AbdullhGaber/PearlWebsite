@@ -1,0 +1,49 @@
+#inputEmail,
+#lblInputPassWrapper {
+    margin-bottom: 20px;
+}
+
+#email,
+#password {
+    background-color: #FCFCFC;
+}
+
+#inputSpanWrapper {
+    position: relative;
+}
+
+.password-wrapper {
+    position: relative;
+}
+
+.eye-icon {
+    position: absolute;
+    right: 3%;
+    top: 50%;
+    transform: translateY(-50%);
+    cursor: pointer;
+}
+
+#forgotPass {
+    text-decoration: none;
+    color: #777;
+    margin-left: 12px;
+    margin-top: 5px;
+}
+
+#btnLogin {
+    width: 22vw;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+}
+
+.text-secondary {
+    color: #777;
+    margin-left: 12px;
+    margin-top: 5px;
+}
+
+.newUserP {
+    text-align: center;
+}

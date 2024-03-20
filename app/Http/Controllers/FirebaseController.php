@@ -14,6 +14,8 @@ class FirebaseController extends Controller
         //real_time_database
         $database = $firebase->createDatabase();
 
+        $auth = $firebase->createAuth();
+
         // $product = $database->getReference('user');
 
         // echo '<pre>';

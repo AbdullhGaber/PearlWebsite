@@ -1,0 +1,314 @@
+.content {
+    height: 100vh;
+    width: 84vw;
+}
+
+.contentWrapper {
+    position: absolute;
+    top: 100px;
+    left: 17.5vw;
+    width: 80%;
+    height: auto;
+    padding: 2rem;
+    background-color: #F9FAFB;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.firstWrapper {
+    width: 95%;
+    height: auto;
+    margin: auto;
+    padding: 2rem;
+    background-color: #ffffff;
+    justify-content: center;
+}
+
+.firstWrapper,
+.secondWrapper,
+.thirdWrapper,
+.forthWrapper,
+.fifthWrapper,
+.sixthWrapper {
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.graph-circle1 {
+    width: 6rem;
+    height: 6rem;
+    margin-top: 4.8rem;
+    border-radius: 50%;
+    background-color: #7EE97B33;
+    position: relative;
+}
+
+.graph-circle1::before {
+    border: 2px solid #7EE97B;
+    clip-path: polygon(0 0, 100% 0, 100% 90%, 0 70%);
+}
+
+.graph-circle1::before,
+.graph-circle2::before,
+.graph-circle3::before,
+.graph-circle4::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+}
+
+.content-right1 {
+    margin-left: 2rem;
+}
+
+.info-content1 {
+    background-color: #BAFFC933;
+    border: 2px solid #78D8B5;
+}
+
+.info-content1,
+.info-content2,
+.info-content3,
+.info-content4 {
+    padding: 1rem;
+    font-size: 1rem;
+    margin-left: 8rem;
+    margin-top: -7rem;
+    width: 50vw;
+}
+
+.graph-circle2 {
+    width: 6rem;
+    height: 6rem;
+    margin-top: 4.8rem;
+    border-radius: 50%;
+    background-color: #FAE6E6;
+    position: relative;
+}
+
+.graph-circle2::before {
+    border: 2px solid #ED8B8B;
+    clip-path: polygon(0 0, 80% 0, 70% 90%, 0 70%);
+}
+
+
+.content-right2 {
+    margin-left: 2rem;
+}
+
+.info-content2 {
+    background-color: #FAE6E6;
+    border: 2px solid #ED8B8B;
+}
+
+.graph-circle3 {
+    width: 6rem;
+    height: 6rem;
+    margin-top: 4.8rem;
+    border-radius: 50%;
+    background-color: #FAF6FF;
+    position: relative;
+}
+
+.graph-circle3::before {
+    border: 2px solid #6767F7;
+    clip-path: polygon(0 0, 60% 0, 60% 80%, 0 50%);
+}
+
+
+.content-right3 {
+    margin-left: 2rem;
+}
+
+.info-content3 {
+    background-color: #FAF6FF;
+    border: 2px solid #A3A3FF;
+}
+
+.graph-circle4 {
+    width: 6rem;
+    height: 6rem;
+    margin-top: 4.8rem;
+    border-radius: 50%;
+    background-color: #FDFEE8;
+    position: relative;
+}
+
+.graph-circle4::before {
+    border: 2px solid #DCDE8C;
+    clip-path: polygon(0 0, 40% 0, 50% 70%, 0 40%);
+}
+
+
+.content-right4 {
+    margin-left: 2rem;
+}
+
+.info-content4 {
+    background-color: #FDFFA933;
+    border: 2px solid #DCDE8C;
+}
+
+#skinProgressChart {
+    margin: 5rem 7rem;
+    background-color: #F7F3FF99;
+    border-radius: 15px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+
+.morningroutine {
+    background-color: #F7F3FF;
+    margin-top: 3rem;
+    margin-left: 3rem;
+    font-size: 1.1rem;
+    width: 14vw;
+    justify-content: center;
+    display: flex;
+    padding: 1rem;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.product {
+    display: flex;
+    align-items: center;
+    width: 57vw;
+    height: 15vh;
+    margin-top: 1.5rem;
+    margin-left: 3rem;
+    background-color: #FFF8F3CC;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+
+}
+
+.productimage {
+    width: 10vw;
+    height: 17vh;
+    margin-left: 0.001rem;
+    z-index: 0;
+    padding: 0.5rem;
+
+}
+
+.product-details {
+    flex-grow: 1;
+    margin-top: 1rem;
+}
+
+.additional-info {
+    display: flex;
+    align-items: center;
+}
+
+.input-container {
+    display: flex;
+    align-items: center;
+    font-size: 0.8rem;
+}
+
+.reason-input1 {
+    margin-left: 2rem;
+    width: 40vw;
+}
+
+.reason-input2 {
+    margin-left: 2.4rem;
+    width: 40vw;
+}
+
+.reason1,
+.reason2 {
+    margin-bottom: 0rem;
+}
+
+.fifthWrapper {
+    display: flex;
+    flex-direction: column;
+}
+
+.input-container {
+    display: flex;
+    align-items: center;
+    margin-top: 0.9rem;
+}
+
+h5 {
+    margin-right: 1rem;
+    margin-bottom: 2rem;
+}
+
+select {
+    width: 10vw;
+    margin-right: 3rem;
+    margin-left: 1rem;
+    margin-bottom: 2rem;
+}
+
+.dateSelect {
+    width: 20vw;
+    margin-left: 8vw;
+    margin-top: -2rem;
+}
+
+label {
+    font-weight: bold;
+    margin-right: 1rem;
+    width: 6rem;
+}
+
+select {
+    padding: 0.5rem;
+    font-size: 1rem;
+}
+
+#selectedDateMessage {
+    margin-top: 1rem;
+    font-weight: bold;
+}
+
+.secondWrapper,
+.thirdWrapper,
+.forthWrapper,
+.fifthWrapper,
+.sixthWrapper {
+    width: 95%;
+    height: auto;
+    margin: auto;
+    margin-top: 2rem;
+    padding: 2rem;
+    background-color: #ffffff;
+}
+
+.patient-info {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.info-column {
+    margin-right: 1rem;
+    justify-content: center;
+    align-items: center;
+}
+
+.patient-image {
+    width: 15vw;
+    height: 15vh;
+    margin-right: 1rem;
+    margin-top: 0.5rem;
+}
+
+.salehP {
+    margin-left: 4rem;
+}
+
+.secondWrapper {
+    margin-top: 2rem;
+}
+
+.info-column p {
+    margin-bottom: 0.5rem;
+}

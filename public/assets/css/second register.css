@@ -1,0 +1,76 @@
+.input-container {
+    display: flex;
+    gap: 10px;
+    justify-content: center;
+    margin-bottom: 2rem;
+}
+
+.otpInput {
+    width: 5vw;
+    height: 10vh;
+    background-color: #F6F6F6;
+    border: none;
+    text-align: center;
+    font-size: larger;
+    font-weight: bold;
+    border-radius: 5px;
+}
+
+#verifyBtn {
+    width: 15vw;
+    height: 3rem;
+    border-radius: 5px;
+    margin: 2rem auto 0 auto;
+    text-align: center;
+}
+
+.arrow-button {
+    width: 3rem;
+    height: 3rem;
+    background-color: #6F6FAF;
+    color: white;
+    border-radius: 20%;
+    justify-content: center;
+    align-items: center;
+    display: flex;
+}
+
+.arrow-button:hover {
+    color: white;
+}
+
+.sendagain {
+    text-decoration: none;
+    color: black;
+}
+
+@media only screen and (max-width: 768px) {
+
+    .otpInput,
+    .arrow-button,
+    #verifyBtn {
+        width: 8vw;
+        height: 5vh;
+    }
+
+    .arrow-button:hover {
+        color: white;
+    }
+
+    #verifyBtn {
+        width: 35vw;
+        height: 2rem;
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    .otpInput {
+        margin-bottom: 1rem;
+    }
+
+    .input-container {
+        flex-direction: row;
+        gap: 10px;
+        justify-content: center;
+    }
+}

@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\FirebaseAuthController;
 use App\Http\Controllers\ProductController;
 use Illuminate\Support\Facades\Route;
 
@@ -14,8 +15,23 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
+Route::get('/welcome', function () {
     return view('welcome');
 });
 
+Route::get('/', function () {
+    return view('index');
+});
+
+Route::get('/contact', function(){
+    return view('contact');
+});
+
 Route::resource('/products' , ProductController::class);
+
+Route::get('/sign_up' , fn() => view('auth.sign_up'));
+Route::get('/sign_in' , fn() => view('auth.sign_in'));
+
+Route::post('/sign_up' , [FirebaseAuthController::class , 'createUserWithEmailAndPassword'])->name('sign_up');
+Route::post('/sign_in' , [FirebaseAuthController::class , 'signInWithEmailAndPassword'])->name('sign_in');
+

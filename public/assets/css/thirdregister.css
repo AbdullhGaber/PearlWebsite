@@ -1,0 +1,50 @@
+#dropdownBranch,
+#dropdownGov,
+#dropdownCity,
+#branchName,
+#CommercialNumber,
+#taxId,
+#branchMobNum,
+#crdtCrd {
+    background-color: #FCFCFC;
+}
+
+#regBtn {
+    width: 15vw;
+    height: 3rem;
+    margin-top: 1rem;
+    border-radius: 5px;
+    text-align: center;
+}
+
+.arrow-button {
+    width: 3rem;
+    height: 3rem;
+    margin-top: 1rem;
+    background-color: #6F6FAF;
+    color: white;
+    border-radius: 20%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.arrow-button:hover {
+    color: white;
+}
+
+@media only screen and (max-width: 768px) {
+    .arrow-button {
+        width: 8vw;
+        height: 5vh;
+    }
+
+    .arrow-button:hover {
+        color: white;
+    }
+
+    #regBtn {
+        width: 20vw;
+        height: 5vh;
+    }
+}

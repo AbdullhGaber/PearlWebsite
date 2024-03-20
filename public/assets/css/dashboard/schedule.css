@@ -1,0 +1,193 @@
+.sceduleTable {
+    width: 95%;
+    border-collapse: collapse;
+    margin-top: 20px;
+    margin-left: 1rem;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+}
+
+.sceduleTable th,
+.sceduleTable td {
+    padding: 1rem;
+    font-size: 0.9rem;
+    font-weight: bold;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+    text-align: center;
+}
+
+.sceduleTable th {
+    background-color: #ffffff;
+    font-size: 0.9rem;
+    font-weight: 700;
+    text-align: center;
+}
+
+.sceduleTable tr:nth-child(even) {
+    background-color: #ffffff;
+}
+
+.sceduleTable tr:nth-child(odd) {
+    background-color: #F7F3FF;
+}
+
+@media (max-width: 768px) {
+
+    .sceduleTable th,
+    .sceduleTable td {
+        font-size: 8px;
+        padding: 8px;
+    }
+
+    .contenttWrapper {
+        width: 100%;
+        margin-top: 15rem;
+        margin-left: 0;
+        display: flex;
+        justify-content: center;
+    }
+}
+
+.appointmentSummary,
+.calendar {
+    background-color: white;
+    border-radius: 10px;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+    margin: 1rem;
+}
+
+.calendar {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#datepicker-container {
+    margin-left: 1.5rem;
+
+}
+
+.appointmentSummary h4 {
+    font-weight: bold;
+}
+
+.boxsWrapper {
+    display: flex;
+    flex-direction: row;
+}
+
+.colorBox1,
+.colorBox2,
+.colorBox3,
+.colorBox4 {
+    border-radius: 5px;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+    box-shadow: 0 0 5px inset rgba(0, 0, 0, 0.2);
+    margin: 0.2rem;
+    width: 25%;
+    margin-bottom: 1rem;
+}
+
+.colorBox1 {
+    background-color: #F3E8FF;
+}
+
+.colorBox2 {
+    background-color: #FFF4DE;
+}
+
+.colorBox3 {
+    background-color: #DCFCE7;
+}
+
+.colorBox4 {
+    background-color: #FFE2E5;
+}
+
+.colorCircle1,
+.colorCircle2,
+.colorCircle3,
+.colorCircle4 {
+    border-radius: 50%;
+    width: 30px;
+    height: 30px;
+    margin: 0.5rem;
+    margin-left: 0.6rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+}
+
+.colorCircle1 {
+    background-color: #BF83FF;
+}
+
+.colorCircle2 {
+    background-color: #FF947A;
+}
+
+.colorCircle3 {
+    background-color: #3CD856;
+}
+
+.colorCircle4 {
+    background-color: #FA5A7D;
+}
+
+.appStatus {
+    color: #425166;
+    font-size: small;
+
+}
+
+.yesterdayStatus {
+    color: #4079ED;
+    font-size: x-small;
+    margin-top: -0.5rem;
+}
+
+.appStatus,
+.yesterdayStatus,
+.boxNumber {
+    margin-left: 0.6rem;
+    font-weight: bold;
+}
+
+button.online {
+    background-color: #F7E1F9;
+    border: 1px solid #BF83FF;
+    border-radius: 2rem;
+    padding: 0.2rem;
+}
+
+button.offline {
+    background-color: #FFEECC;
+    border: 1px solid #FF947A;
+    border-radius: 2rem;
+    padding: 0.2rem;
+}
+
+button.confirm {
+    background-color: #3CD856B8;
+    color: white;
+    border: 1px solid #3CD856B8;
+    border-radius: 0.5rem;
+    padding: 0.2rem;
+}
+
+button.cancel {
+    background-color: #FA5A7DCC;
+    border: 1px solid #FA5A7DCC;
+    color: white;
+    border-radius: 0.5rem;
+    padding: 0.2rem;
+}
+
+button.canceled {
+    background-color: #DEDEDE;
+    border: 1px solid #DEDEDE;
+    color: #838383;
+    border-radius: 0.5rem;
+    padding: 0.2rem;
+}
