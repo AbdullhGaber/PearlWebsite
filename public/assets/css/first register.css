@@ -10,6 +10,10 @@
     background-color: #FCFCFC;
 }
 
+#licenseInput{
+    height: 4.0rem;
+}
+
 #inputPassword {
     position: relative;
     width: 100%;
@@ -87,11 +91,6 @@
     font-size: 10px;
 }
 
-#PassErrorMsg {
-    color: #dc3545;
-    font-size: 14px;
-}
-
 #profileImage {
     display: none;
 }
@@ -125,6 +124,17 @@
 
 .arrow-button:hover {
     color: white;
+}
+
+.error-message {
+    color: #dc3545; /* Red color for error messages */
+    font-size: 14px; /* Adjust font size as needed */
+    margin-top: 5px; /* Add spacing between input and error message */
+}
+
+#licenseError{
+    margin-left: -0.7rem;
+    margin-top: 0.8rem;
 }
 
 @media only screen and (max-width: 768px) {

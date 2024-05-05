@@ -3,14 +3,21 @@
     align-items: center;
     justify-content: center;
 }
-
+.btn-navy {
+    background-color: #6F6FAF;
+    color: #fff;
+    border: none;
+    border-radius: 15px;
+    cursor: pointer;
+    font-size: 18px;
+    font-weight: bold;
+}
 .contactWrapper {
     width: 80%;
     height: auto;
     margin-top: 5rem;
     margin-bottom: 5rem;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    ;
 }
 
 .leftContact {
@@ -29,9 +36,11 @@
 }
 
 #nameInput,
-#emailInput,
-#phoneInput,
 #quesInput {
+    background-color: #FCFCFC;
+}
+
+.custom-input {
     background-color: #FCFCFC !important;
 }
 

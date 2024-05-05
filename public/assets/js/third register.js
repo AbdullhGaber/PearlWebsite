@@ -1,3 +1,4 @@
+// Define variables to store selected options and input values
 let selectedGovernment = null;
 let selectedCity = null;
 let selectedBranchType = null;
@@ -6,7 +7,9 @@ let commercialNumber = "";
 let taxIdNumber = "";
 let branchMobileNumber = "";
 let branchName = "";
+let creditCard = "";
 
+// Define an object to store error messages
 let errors = {
   commercialNumber: "",
   taxIdNumber: "",
@@ -16,12 +19,15 @@ let errors = {
   paymentPlan: "",
   branchMobileNumber: "",
   branchName: "",
+  creditCard: "",
 };
 
+// Function to handle previous step
 function handlePreviousStep() {
-  PreviousStep();
+  PreviousStep(); // Assuming this function is defined elsewhere
 }
 
+// Event handler for government selection change
 function handleGovernmentChange(event) {
   const governmentValue = event.target.value;
 
@@ -32,29 +38,41 @@ function handleGovernmentChange(event) {
   } else {
     selectedGovernment = governmentValue;
   }
+
+  updateErrorMessages();
 }
 
+// Event handler for city selection change
 function handleCityChange(event) {
   const cityValue = event.target.value;
   selectedCity = cityValue;
 
   errors.city = "";
+
+  updateErrorMessages();
 }
 
+// Event handler for branch type selection change
 function handleBranchTypeChange(event) {
   const branchTypeValue = event.target.value;
   selectedBranchType = branchTypeValue;
 
   errors.branchType = "";
+
+  updateErrorMessages();
 }
 
+// Event handler for payment plan selection change
 function handlePaymentPlanChange(event) {
   const paymentPlanValue = event.target.value;
   selectedPaymentPlan = paymentPlanValue;
 
   errors.paymentPlan = "";
+
+  updateErrorMessages();
 }
 
+// Event handler for commercial number input change
 function handleCommercialNumberChange(event) {
   const value = event.target.value.replace(/\D/g, "");
   if (/^\d{0,3}(\d{0,3})?(\d{0,3})?$/.test(value)) {
@@ -65,8 +83,11 @@ function handleCommercialNumberChange(event) {
   } else {
     errors.commercialNumber = "Invalid format";
   }
+
+  updateErrorMessages();
 }
 
+// Event handler for tax ID number input change
 function handleTaxIdNumberChange(event) {
   const value = event.target.value.replace(/\D/g, "");
   if (/^\d{0,3}(\d{0,3})?(\d{0,3})?$/.test(value)) {
@@ -77,8 +98,11 @@ function handleTaxIdNumberChange(event) {
   } else {
     errors.taxIdNumber = "Invalid format";
   }
+
+  updateErrorMessages();
 }
 
+// Event handler for branch mobile number input change
 function handleBranchMobileNumberChange(event) {
   const value = event.target.value;
   branchMobileNumber = value;
@@ -88,11 +112,14 @@ function handleBranchMobileNumberChange(event) {
   } else {
     errors.branchMobileNumber = "";
   }
+
+  updateErrorMessages();
 }
 
+// Event handler for branch name input change
 function handleBranchNameChange(event) {
   const value = event.target.value.trim();
-  const arabicRegex = /^[\u0600-\u06FF\s]*$/;
+  const arabicRegex = /^[\u0600-\u06FF\s]*$/; // Regex for Arabic characters
 
   if (arabicRegex.test(value) || value === "") {
     branchName = value;
@@ -100,8 +127,11 @@ function handleBranchNameChange(event) {
   } else {
     errors.branchName = "Arabic characters only";
   }
+
+  updateErrorMessages();
 }
 
+// Function to validate form inputs
 function validateForm() {
   let isValid = true;
   const newErrors = { ...errors };
@@ -146,22 +176,57 @@ function validateForm() {
     isValid = false;
   }
 
+  if (creditCard.trim() === "") {
+    newErrors.creditCard = "Credit card number is required";
+    isValid = false;
+  }
+
   errors = newErrors;
+
+  updateErrorMessages();
 
   return isValid;
 }
 
+// Function to handle form submission
 function handleSubmit(e) {
   e.preventDefault();
   const isValid = validateForm();
 
   if (isValid) {
     console.log("Registration Done");
+    // Perform further actions if form is valid
   }
 }
 
+// Function to handle key press events
 function handleKeyPress(e) {
   if (e.key === "Enter") {
     e.preventDefault();
   }
+}
+
+// Attach event listeners to form elements
+document.getElementById("dropdownBranch").addEventListener("change", handleBranchTypeChange);
+document.getElementById("dropdownGov").addEventListener("change", handleGovernmentChange);
+document.getElementById("dropdownCity").addEventListener("change", handleCityChange);
+document.getElementById("CommercialNumber").addEventListener("input", handleCommercialNumberChange);
+document.getElementById("taxId").addEventListener("input", handleTaxIdNumberChange);
+document.getElementById("branchMobNum").addEventListener("input", handleBranchMobileNumberChange);
+document.getElementById("branchName").addEventListener("input", handleBranchNameChange);
+document.getElementById("regBtn").addEventListener("click", handleSubmit);
+document.addEventListener("keypress", handleKeyPress);
+
+function updateErrorMessages() {
+  console.log("Updating error messages...");
+  console.log("Errors:", errors);
+
+  document.getElementById("branchTypeErrMsg").innerText = errors.branchType;
+  document.getElementById("governmentErrMsg").innerText = errors.government;
+  document.getElementById("cityErrMsg").innerText = errors.city;
+  document.getElementById("branchNameErrMsg").innerText = errors.branchName;
+  document.getElementById("branchMobileNumberErrMsg").innerText = errors.branchMobileNumber;
+  document.getElementById("commercialNumberErrMsg").innerText = errors.commercialNumber;
+  document.getElementById("taxIdNumberErrMsg").innerText = errors.taxIdNumber;
+  document.getElementById("creditCardErrMsg").innerText = errors.creditCard;
 }

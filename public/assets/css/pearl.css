@@ -49,6 +49,18 @@ body {
     margin-top: 0.5rem;
 }
 
+.main-nav .nav .active {
+    background-color: #6F6FAF;
+    padding: 2px;
+    padding-left: 10px;
+    padding-right: 10px;
+    border-radius: 5px;
+}
+
+.main-nav .nav .active a {
+    color: white;
+}
+
 .menu-trigger {
     display: none;
     cursor: pointer;
@@ -134,12 +146,12 @@ body {
 
 .authWrapper {
     background-color: #F9FAFB;
-    box-shadow: 0 0 8px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
     width: 80%;
     height: auto;
     margin-top: 5rem;
     margin-bottom: 5rem;
-    padding: 6%;
+    padding: 3%;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -157,14 +169,12 @@ body {
     width: 100%;
     height: auto;
     border-radius: 6px;
-    padding: 6%;
+    padding: 3%;
 }
 
 .authHeader {
-    font-size: 48px;
     text-align: center;
     font-weight: bold;
-    color: #1e1e54;
 }
 
 .footer-area {

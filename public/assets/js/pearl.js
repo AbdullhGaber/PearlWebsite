@@ -23,8 +23,6 @@ document.addEventListener('DOMContentLoaded', function () {
     });
 });
 
-let showPassword = false;
-
 function handleTogglePasswordVisibility() {
     const passwordInput = document.getElementById("password");
     const eyeIcon = document.getElementById("showPass");

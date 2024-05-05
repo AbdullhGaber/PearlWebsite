@@ -11,6 +11,7 @@ td {
     text-align: center;
     border-bottom: 1px solid #ddd;
     font-weight: bold;
+    
 }
 
 th {
@@ -23,8 +24,18 @@ tr:nth-child(even) {
     background-color: #ffffff;
 }
 
+tr:nth-child(even):hover {
+    background-color: #f0f0f0;
+    cursor: pointer;
+}
+
 tr:nth-child(odd) {
-    background-color: #F7F3FF;
+    background-color: #faf7fd;
+}
+
+tr:nth-child(odd):hover {
+    background-color: #ece4fd;
+    cursor: pointer;
 }
 
 @media (max-width: 768px) {

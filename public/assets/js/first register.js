@@ -7,6 +7,8 @@ let formData = {
   password: "",
   DOB: "",
   phone: "",
+  title: "",
+  license: null,
 };
 let errors = {
   firstName: "",
@@ -15,6 +17,8 @@ let errors = {
   password: "",
   DOB: "",
   phone: "",
+  title: "",
+  license: "",
 };
 
 function handleInputChange(e) {
@@ -135,6 +139,16 @@ function validateForm(event) {
     isValid = false;
   }
 
+  if (formData.title.trim() === "") {
+    newErrors.title = "Title is required";
+    isValid = false;
+  }
+
+  if (!formData.license) {
+    newErrors.license = "Professional license is required";
+    isValid = false;
+  }
+
   const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
   if (!emailRegex.test(formData.email)) {
     newErrors.email = "Invalid email address";
@@ -145,11 +159,6 @@ function validateForm(event) {
     isValid = false;
   }
 
-  const passwordRegex = /^(?=.*[!@#$%^&*()_+{}[\]:;<>,.?~\\-])(?=.*[A-Z])(?=.*\d)[\w!@#$%^&*()_+{}[\]:;<>,.?~\\-]{8,}$/;
-  if (!passwordRegex.test(formData.password.trim())) {
-    newErrors.password = "Password is weak";
-    isValid = false;
-  }
   if (formData.password.trim() === "") {
     newErrors.password = "Password is required";
     isValid = false;
@@ -195,10 +204,15 @@ function validateForm(event) {
 }
 
 function updateErrorMessages() {
+  console.log("Updating error messages...");
+  console.log("Errors:", errors);
+
   document.getElementById("fnameError").innerText = errors.firstName;
   document.getElementById("lnameError").innerText = errors.lastName;
   document.getElementById("emailError").innerText = errors.email;
   document.getElementById("passwordError").innerText = errors.password;
   document.getElementById("dobError").innerText = errors.DOB;
   document.getElementById("phoneError").innerText = errors.phone;
+  document.getElementById("titleError").innerText = errors.title;
+  document.getElementById("licenseError").innerText = errors.license;
 }

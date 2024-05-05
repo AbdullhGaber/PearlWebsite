@@ -29,4 +29,20 @@ class FirebaseAuthController extends Controller
 
     }
 
+    public function sign_in(){
+        return view('auth.login');
+    }
+
+    public function first_register(){
+        return view('auth.first_register');
+    }
+
+    public function second_register(){
+        return view('auth.second_register');
+    }
+
+    public function third_register(){
+        return view('auth.third_register');
+    }
+
 }

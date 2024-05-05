@@ -184,7 +184,7 @@ button.cancel {
     padding: 0.2rem;
 }
 
-button.canceled {
+button.disabled {
     background-color: #DEDEDE;
     border: 1px solid #DEDEDE;
     color: #838383;
