@@ -4,20 +4,22 @@
     <div class="container">
         <div class="authWrapper">
             <div class="authWrapper2">
-                <form class="p-3">
+                <form class="p-3" method="POST" action="{{ route('auth.login') }}">
+                    @csrf
+                    @method("POST")
                     <h1 class="text-center text-dark fw-bold authHeader">Login</h1>
                     <div class="mt-3" id="inputEmail">
                         <label for="email" class="text-dark ms-2 fw-bold">
                             Email Address
                         </label>
-                        <input type="email" id="email" class="form-control rounded-2" required />
+                        <input type="email" name="email" id="email" class="form-control rounded-2" required />
                     </div>
                     <div class="form-group" id="lblInputPassWrapper">
                         <label for="password" class="text-dark ms-2 fw-bold">
                             Password
                         </label>
                         <div class="password-wrapper mb-2">
-                            <input type="password" id="password" class="form-control rounded-2 bg-input" required />
+                            <input type="password" name="password" id="password" class="form-control rounded-2 bg-input" required />
                             <div class="eye-icon">
                                 <i id="showPass" class="fas fa-eye" onclick="handleTogglePasswordVisibility()"></i>
                             </div>

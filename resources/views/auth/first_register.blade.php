@@ -4,7 +4,9 @@
     <div class="container">
         <div class="authWrapper">
             <div class="authWrapper2">
-                <form class="p-4">
+                <form class="p-4" method="POST" action="{{ route('auth.sign_up') }}">
+                    @csrf
+                    @method("POST")
                     <h1 class="mb-1 text-center text-dark fw-bold authHeader">Register</h1>
                     <h6 class="text-center mb-4">Create Your Profile</h6>
                     <div class="mb-3 text-center" id="fileInput">
@@ -92,9 +94,9 @@
                             <i class="far fa-clipboard"></i>
                         </span>
                     </div>
-                    <a href="{{ route('auth.second_register') }}" class="arrow-button float-end" onclick="return validateForm(event)">
-                        <i class="fa fa-arrow-right"></i>
-                    </a>
+                    <button type="submit" class="arrow-button float-end"  onclick="return validateForm(event)">
+                            <i class="fa fa-arrow-right"></i>
+                    </button>
                 </form>
             </div>
         </div>

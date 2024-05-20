@@ -29,7 +29,7 @@
     <div class="header">
         <img src="{{ asset('assets/Images/logo.svg') }}" class="logoHeader" >
 
-        <a class="btn  logout" href="/" role="button"> <i class="fa-solid fa-arrow-right-from-bracket"></i>Logout</a>
+        <a class="btn  logout" href="{{ route('home.index') }}" role="button"> <i class="fa-solid fa-arrow-right-from-bracket"></i>Logout</a>
         <div class="notification-icon" onclick="toggleNotifications()">
             <i class="fas fa-bell"></i>
 

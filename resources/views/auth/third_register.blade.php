@@ -12,52 +12,43 @@
                     <div class="text-center mb-4">
                     </div>
                     <div class="mb-3">
-                        <select class="form-select" id="dropdownBranch" onchange="handleBranchTypeChange(event)">
+                        <input type="text" name="branchName" id="branchName" class="form-control" placeholder="Branch Name"
+                            onchange="handleBranchNameChange(event)" />
+                        <p class="error-message ms-2" id="branchNameErrMsg"></p>
+                    </div>
+
+                    <div class="mb-3">
+                        <select name="branchType" class="form-select" id="dropdownBranch" onchange="handleBranchTypeChange(event)">
                             <option value="" class="firstOp">Branch Type</option>
                             <option value="Clinic">Clinic</option>
                             <option value="Center">Center</option>
+                            <option value="Center">Hospital</option>
                         </select>
                         <p class="error-message ms-2" id="branchTypeErrMsg"></p>
                     </div>
                     <div class="mb-3">
-                        <select class="form-select" id="dropdownGov" onchange="handleGovernmentChange(event)">
-                            <option value="" class="firstOp">Select Government</option>
-                            <option value="Cairo">Cairo</option>
-                            <option value="Dakahlia">Dakahlia</option>
-                        </select>
-                        <p class="error-message ms-2" id="governmentErrMsg"></p>
+                        <input type="text" name="government" class="form-control" placeholder="Government" />
+                        <p class="error-message ms-2"></p>
+                    </div>
+                     <div class="mb-3">
+                        <input type="text" name="city" class="form-control" placeholder="City" />
+                        <p class="error-message ms-2"></p>
                     </div>
                     <div class="mb-3">
-                        <select class="form-select" id="dropdownCity" onchange="handleCityChange(event)" disabled>
-                            <option value="" class="firstOp">Select City</option>
-                        </select>
-                        <p class="error-message ms-2" id="cityErrMsg"></p>
-                    </div>
-                    <div class="mb-3">
-                        <input type="text" id="branchName" class="form-control" placeholder="Branch Name In Arabic"
-                            onchange="handleBranchNameChange(event)" />
-                        <p class="error-message ms-2" id="branchNameErrMsg"></p>
-                    </div>
-                    <div class="mb-3">
-                        <input type="tel" id="branchMobNum" class="form-control" placeholder="Branch Mobile Number"
+                        <input type="tel" name="mobile" id="branchMobNum" class="form-control" placeholder="Branch Mobile Number"
                             onchange="handleBranchMobileNumberChange(event)" />
                         <p class="error-message ms-2" id="branchMobileNumberErrMsg"></p>
                     </div>
                     <div class="mb-3">
-                        <input type="text" id="CommercialNumber" class="form-control"
+                        <input type="text" name="CRN" id="CommercialNumber" class="form-control"
                             onchange="handleCommercialNumberChange(event)"
                             placeholder="Commercial Registration Number" />
                         <p class="error-message ms-2" id="commercialNumberErrMsg"></p>
                     </div>
                     <div class="mb-3">
-                        <input type="text" id="taxId" class="form-control" placeholder="Tax ID Number"
+                        <input type="text" name="taxId" id="taxId" class="form-control" placeholder="Tax ID Number"
                             oninput="formatTaxId(this)" />
                         <p class="error-message ms-2" id="taxIdNumberErrMsg"></p>
-                    </div>
-                    <div class="mb-3">
-                        <input type="text" id="crdtCrd" class="form-control" onchange="handleCreditCardChange(event)"
-                            placeholder="Credit Card Number" />
-                        <p class="error-message ms-2" id="creditCardErrMsg"></p>
                     </div>
                     <div>
                         <a href="{{ route('auth.second_register') }}" class="arrow-button float-start">

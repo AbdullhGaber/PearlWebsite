@@ -44,6 +44,7 @@ Route::group(['prefix'=>'auth'],function(){
     Route::get('/third_register' , [FirebaseAuthController::class , 'third_register'])->name('auth.third_register');
     Route::get('/sign_in' , [FirebaseAuthController::class , 'sign_in'])->name('auth.login');
 
+    Route::post('/firstRegister' , [FirebaseAuthController::class , 'firstRegister'])->name('auth.firstRegister');
     Route::post('/sign_up' , [FirebaseAuthController::class , 'createUserWithEmailAndPassword'])->name('auth.sign_up');
     Route::post('/sign_in' , [FirebaseAuthController::class , 'signInWithEmailAndPassword'])->name('auth.sign_in');
 });
