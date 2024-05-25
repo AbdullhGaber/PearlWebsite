@@ -2,7 +2,7 @@
 @section('content')
     <div class="content container">
         <div class="contenttWrapper">
-            <h2>Good morning Dr/ Osama</h2>
+            <h2>Good morning Dr/ {{ $user['firstName']}} {{  $user['lastName']  }}</h2>
             <div class="row">
                 <div class="col-7 appointmentSummary">
                     <h4 class="mt-4">Today's Appointments</h4>
@@ -12,7 +12,7 @@
                             <div class="colorCircle1">
                                 <i class="fa fa-bell"></i>
                             </div>
-                            <h5 class="boxNumber">8</h5>
+                            <h5 class="boxNumber">{{ $user['upcoming'] }}</h5>
                             <p class="appStatus">Upcoming</p>
                             <p class="yesterdayStatus">+0.5% from yesterday</p>
                         </div>
@@ -20,15 +20,15 @@
                             <div class="colorCircle2">
                                 <i class="fa fa-bell"></i>
                             </div>
-                            <h5 class="boxNumber">300</h5>
-                            <p class="appStatus">Offline</p>
+                            <h5 class="boxNumber">{{ sizeOf($user['appointments']) - 1 }}</h5>
+                            <p class="appStatus">Appointments</p>
                             <p class="yesterdayStatus">+5% from yesterday</p>
                         </div>
                         <div class="colorBox3">
                             <div class="colorCircle3">
                                 <i class="fa fa-bell"></i>
                             </div>
-                            <h5 class="boxNumber">5</h5>
+                            <h5 class="boxNumber">{{ $user['finished'] }}</h5>
                             <p class="appStatus">Finished</p>
                             <p class="yesterdayStatus">+1.2% from yesterday</p>
                         </div>
@@ -36,7 +36,7 @@
                             <div class="colorCircle4">
                                 <i class="fa fa-bell"></i>
                             </div>
-                            <h5 class="boxNumber">12</h5>
+                            <h5 class="boxNumber">{{ $user['cancelled'] }}</h5>
                             <p class="appStatus">Cancelled</p>
                             <p class="yesterdayStatus">+8% from yesterday</p>
                         </div>
@@ -122,14 +122,14 @@
             </div>
             <div class="row">
                 <div class="doctorRating col-7">
-                    <h4 class="mt-2">Dr/ Osama Rate</h4>
+                    <h4 class="mt-2">Dr/ {{ $user['firstName'] }} {{ $user['lastName'] }} Rate</h4>
                     <p>Rating and reviews are verified and are from people who use the service</p>
                     <div class="rating-section">
                         <div class="left-section">
-                            <div class="total-rating">4.5</div>
-                            <div id="rating" class="rateyo custom-width" data-rateyo-rating="4.5"
+                            <div class="total-rating">{{ $user['rate'] }}</div>
+                            <div id="rating" class="rateyo custom-width" data-rateyo-rating="{{ $user['rate'] }}"
                                 data-rateyo-half-star="true" disabled></div>
-                            <div class="total-num-ratings text-secondary">2456 ratings</div>
+                            <div class="total-num-ratings text-secondary">{{ $user['rateNo'] }} ratings</div>
                         </div>
                         <div class="right-section">
                             <div class="rating-bar">

@@ -23,7 +23,7 @@ class HasAuthMiddleware
      */
     public function handle(Request $request, Closure $next)
     {
-      
+
         $idToken = $request->session()->get('pearlUserToken');
 
         $projectId = "skincaredb-eb7c5";
@@ -37,11 +37,8 @@ class HasAuthMiddleware
         }
 
         try {
-
             $verifier = IdTokenVerifier::createWithProjectId($projectId);
-            // $uid = $verifiedIdToken->claims()->get('sub');
-            // Optionally, you can set the user in Laravel's auth system if needed
-            // $user = LaravelAuth::loginUsingId($uid);
+
             return $next($request);
         } catch (InvalidCustomToken $e) {
             Log::error('Invalid Firebase token: ' . $e->getMessage());

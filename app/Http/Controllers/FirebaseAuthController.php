@@ -52,25 +52,38 @@ class FirebaseAuthController extends Controller
             //    null
             // );
 
-            $user = [
-                "firstName" => $firstName,
-                "lastName" => $lastName,
-                "image" => $image,
-                "title" => $title,
-                "license" => $license,
-                "phoneNumber" => $phoneNumber,
-                "age" => $age,
-                "branch" => "No Branch"
-            ];
 
-            $this->database->getReference('doctor')->push($user);
+
 
             try {
                 $result = $this->auth->createUserWithEmailAndPassword($request->email, $request->password);
 
+                $user = [
+                    "firstName" => $firstName,
+                    "lastName" => $lastName,
+                    "image" => $image,
+                    "title" => $title,
+                    "license" => $license,
+                    "patients" => [""],
+                    "rate" => 0.0,
+                    "rateNo" => 0,
+                    "appointments" => [""],
+                    "phoneNumber" => $phoneNumber,
+                    "upcoming" => 0,
+                    "finished" => 0,
+                    "cancelled" => 0,
+                    "age" => $age,
+                    "branch" => "No Branch",
+                    "uid" => $result->uid
+                ];
+
                 $customToken = $this->auth->createCustomToken($result->uid);
 
                 $request->session()->put('pearlUserToken', $customToken);
+
+                $request->session()->put('uid' , $result->uid);
+
+                $this->database->getReference('doctors')->push($user);
 
                 return redirect()->route('dashboard.index');
             } catch (\Throwable $th) {
@@ -94,6 +107,8 @@ class FirebaseAuthController extends Controller
                 $session = $request->session();
 
                 $session->put('pearlUserToken', $customToken);
+
+                $session->put('uid', $uid);
 
                  return redirect()->route('dashboard.index');
             } else {
