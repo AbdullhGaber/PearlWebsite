@@ -1,10 +1,6 @@
 <?php
 
 namespace App\Http\Controllers;
-
-use App\Data\Branch;
-use App\Data\User;
-use App\Http\Requests\PearlRequest;
 use Illuminate\Http\Request;
 use Kreait\Firebase\Contract\Auth;
 use Carbon\Carbon;
@@ -14,8 +10,6 @@ class FirebaseAuthController extends Controller
 {
     private $auth = null;
     public $database = null;
-
-    private $mPearlRequest = null;
 
     public function __construct(Auth $auth, Database $database)
     {
@@ -71,25 +65,49 @@ class FirebaseAuthController extends Controller
 
             $this->database->getReference('doctor')->push($user);
 
-           try {
-            $this->auth->createUserWithEmailAndPassword($request->email , $request->password);
-            return view('dashboard.index');
-           } catch (\Throwable $th) {
-              throw $th;
-           }
+            try {
+                $result = $this->auth->createUserWithEmailAndPassword($request->email, $request->password);
+
+                $customToken = $this->auth->createCustomToken($result->uid);
+
+                $request->session()->put('pearlUserToken', $customToken);
+
+                return redirect()->route('dashboard.index');
+            } catch (\Throwable $th) {
+                // You can log the error or return a view with an error message
+                return redirect()->back()->withErrors(['error' => 'Registration failed. Please try again.']);
+            }
 
         }
     }
 
     public function signInWithEmailAndPassword(Request $request){
-       $result = $this->auth->signInWithEmailAndPassword($request->email , $request->password);
 
-       if(is_string($result->firebaseUserId())){
-            return view('dashboard.index');
-       }else{
-            echo "<script>alert('something went wrong !')</script>";
-       }
+        try {
+            $result = $this->auth->signInWithEmailAndPassword($request->email, $request->password);
 
+            $uid = $result->firebaseUserId();
+
+            if(is_string($uid)) {
+                $customToken = $this->auth->createCustomToken($uid);
+
+                $session = $request->session();
+
+                $session->put('pearlUserToken', $customToken);
+
+                 return redirect()->route('dashboard.index');
+            } else {
+                return redirect()->back()->withErrors(['error' => 'Login failed. Invalid user ID.']);
+            }
+        } catch (\Throwable $th) {
+            // You can log the error or return a view with an error message
+            return "Throw Error";
+        }
+    }
+
+    public function logout(Request $request){
+        $request->session()->put('pearlUserToken', null);
+        return redirect()->route('home.index');
     }
 
     public function sign_in(){

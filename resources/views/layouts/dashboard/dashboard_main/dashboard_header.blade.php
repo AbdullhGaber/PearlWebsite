@@ -29,7 +29,11 @@
     <div class="header">
         <img src="{{ asset('assets/Images/logo.svg') }}" class="logoHeader" >
 
-        <a class="btn  logout" href="{{ route('home.index') }}" role="button"> <i class="fa-solid fa-arrow-right-from-bracket"></i>Logout</a>
+        <form method="POST" action="{{ route('auth.logout') }}">
+            @csrf
+            @method("POST")
+            <button class="btn  logout" type="submit"> <i class="fa-solid fa-arrow-right-from-bracket"></i>Logout</button>
+        </form>
         <div class="notification-icon" onclick="toggleNotifications()">
             <i class="fas fa-bell"></i>
 
