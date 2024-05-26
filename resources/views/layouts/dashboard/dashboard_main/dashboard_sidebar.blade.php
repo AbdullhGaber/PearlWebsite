@@ -25,7 +25,7 @@
 
         </ul>
 
-        <li id="profileLi"><a href="profile">Profile</a></li>
+        <li id="profileLi"><a href="{{ route('dashboard.profile') }}">Profile</a></li>
         </ul>
     </div>
 </div>
