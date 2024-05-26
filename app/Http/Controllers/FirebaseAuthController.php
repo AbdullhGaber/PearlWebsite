@@ -74,7 +74,8 @@ class FirebaseAuthController extends Controller
                     "cancelled" => 0,
                     "age" => $age,
                     "branch" => "No Branch",
-                    "uid" => $result->uid
+                    "uid" => $result->uid,
+                    "email"=>$result->email
                 ];
 
                 $customToken = $this->auth->createCustomToken($result->uid);

@@ -25,7 +25,11 @@ class DashboardController extends Controller
     }
 
     public function schedule(){
-        return view('dashboard.schedule');
+        $uid = Session::get('uid');
+        $users = $this->database->getReference('doctors')->orderByChild('uid')->equalTo($uid)->getSnapshot()->getValue();
+        foreach ($users as $key => $user) {
+            return view('dashboard.schedule')->with('user' , $user);
+        }
     }
 
     public function messages(){
@@ -44,8 +48,39 @@ class DashboardController extends Controller
     }
 
     public function profile(){
-        return view('dashboard.profile');
+        $uid = Session::get('uid');
+        $users = $this->database->getReference('doctors')->orderByChild('uid')->equalTo($uid)->getSnapshot()->getValue();
+        foreach ($users as $key => $user) {
+            return view('dashboard.profile')->with('user' , $user);
+        }
     }
+    public function updateProfile(Request $request, string $uid){
+        $uid = Session::get('uid');
+        $users = $this->database->getReference('doctors')->orderByChild('uid')->equalTo($uid)->getSnapshot()->getValue();
+
+        $fields = ['firstName', 'lastName', 'title', 'email', 'phoneNumber'];
+        $hasChanges = false;
+
+        foreach ($users as $key => $user) {
+            $updates = [];
+            foreach ($fields as $field) {
+                if ($user[$field] !== $request->input($field)) {
+                    $updates[$field] = $request->input($field);
+                    $hasChanges = true;
+                }
+            }
+            if ($hasChanges) {
+                $this->database->getReference('doctors/' . $key)->update($updates);
+            }
+        }
+
+        if ($hasChanges) {
+            return back()->with('status', 'Profile updated successfully');
+        }
+
+        return back();
+    }
+
 
     public function patient_report(){
         return view('dashboard.patientsreport');

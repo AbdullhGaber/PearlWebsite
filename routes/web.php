@@ -46,6 +46,7 @@ Route::middleware('firebase.auth')->name('dashboard.')->prefix('/dashboard')->gr
         Route::get('/view_branch' ,[DashboardController::class , 'view_branches'])->name('view_branch');
         Route::get('/add_branch' , [DashboardController::class , 'create_branches'])->name('add_branch');
         Route::get('/profile' ,[DashboardController::class , 'profile'] )->name('profile');
+        Route::put('/profile/{uid}' ,[DashboardController::class , 'updateProfile'] )->name('updateProfile');
         Route::get('/patient_report' ,[DashboardController::class , 'patient_report'] )->name('patient_report');
     }
 );
