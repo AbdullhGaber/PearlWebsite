@@ -20,7 +20,7 @@
                 </li>
 
                 <li class="nav-item">
-                    <a class="nav-link  " href="{{ route('dashboard.view_branch') }}" style="margin-left:100px"> view Branch</a>
+                    <a class="nav-link  " href="{{ route('dashboard.view_branches') }}" style="margin-left:100px"> view Branch</a>
                 </li>
 
         </ul>

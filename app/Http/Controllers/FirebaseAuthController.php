@@ -73,7 +73,7 @@ class FirebaseAuthController extends Controller
                     "finished" => 0,
                     "cancelled" => 0,
                     "age" => $age,
-                    "branch" => "No Branch",
+                    "branches" => [""],
                     "uid" => $result->uid,
                     "email"=>$result->email
                 ];

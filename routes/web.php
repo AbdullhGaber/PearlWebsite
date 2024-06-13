@@ -31,10 +31,10 @@ Route::get('/test-firebase', function (Auth $auth) {
     }
 });
 
-Route::group(['prefix'=>'home'],function(){
+// Route::group(['prefix'=>'home'],function(){
     Route::get('/' , [HomeController::class , 'index'])->name('home.index');
     Route::get('/contact' , [HomeController::class , 'contact'])->name('home.contact');
-});
+// });
 
 //dashboard
 Route::middleware('firebase.auth')->name('dashboard.')->prefix('/dashboard')->group(
@@ -43,8 +43,11 @@ Route::middleware('firebase.auth')->name('dashboard.')->prefix('/dashboard')->gr
         Route::get('/schedule' , [DashboardController::class , 'schedule'])->name('schedule');
         Route::get('/messages' ,[DashboardController::class , 'messages'])->name('messages');
         Route::get('/patients' , [DashboardController::class , 'patients'])->name('patients');
-        Route::get('/view_branch' ,[DashboardController::class , 'view_branches'])->name('view_branch');
-        Route::get('/add_branch' , [DashboardController::class , 'create_branches'])->name('add_branch');
+        Route::get('/view_branches', [DashboardController::class, 'viewBranches'])->name('view_branches');
+        Route::get('/add_branch' , [DashboardController::class , 'addBranch'])->name('add_branch');
+        Route::post('/store_branch', [DashboardController::class, 'storeBranch'])->name('store_branch');
+        Route::delete('/delete_branch', [DashboardController::class, 'deleteBranch'])->name('delete_branch');
+        Route::put('/branch/{uid}', [DashboardController::class, 'updateBranch'])->name('updateBranch');
         Route::get('/profile' ,[DashboardController::class , 'profile'] )->name('profile');
         Route::put('/profile/{uid}' ,[DashboardController::class , 'updateProfile'] )->name('updateProfile');
         Route::get('/patient_report' ,[DashboardController::class , 'patient_report'] )->name('patient_report');
