@@ -21,18 +21,18 @@
                     </tr>
                 </thead>
                 <tbody>
-                    @if (isset($branches) && count($branches) > 0)
-                        @foreach($branches as $branchKey => $branch)
+                    @if ($branches)
+                        @foreach ($branches as $branchKey => $branch)
                             <tr>
                                 <td>{{ $branch['branch_type'] }}</td>
                                 <td>{{ $branch['branch_name'] }}</td>
-                                <td>{{ $branch['government'] }}</td>
-                                <td>{{ $branch['city'] }}</td>
+                                <td>{{ $branch['government'] ?? 'N/A' }}</td>
+                                <td>{{ $branch['city'] ?? 'N/A' }}</td>
                                 <td>{{ $branch['phone_number'] }}</td>
                                 <td>{{ $branch['commercial_registration_number'] }}</td>
                                 <td>{{ $branch['tax_id_number'] }}</td>
                                 <td>
-                                    <a href="{{ route('dashboard.updateBranch', ['uid' => $branchKey]) }}">
+                                    <a href="{{ route('dashboard.editBranch', ['branchId' => $branchKey]) }}">
                                         <i class="fa-solid fa-pen-to-square text-primary"></i>
                                     </a>
                                 </td>
