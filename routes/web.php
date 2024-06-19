@@ -31,10 +31,10 @@ Route::get('/test-firebase', function (Auth $auth) {
     }
 });
 
-// Route::group(['prefix'=>'home'],function(){
+Route::group(['prefix'=>'home'],function(){
     Route::get('/' , [HomeController::class , 'index'])->name('home.index');
     Route::get('/contact' , [HomeController::class , 'contact'])->name('home.contact');
-// });
+});
 
 //dashboard
 Route::middleware('firebase.auth')->name('dashboard.')->prefix('/dashboard')->group(function() {
@@ -46,7 +46,7 @@ Route::middleware('firebase.auth')->name('dashboard.')->prefix('/dashboard')->gr
     Route::get('/add_branch', [DashboardController::class, 'addBranch'])->name('add_branch');
     Route::post('/store_branch', [DashboardController::class, 'storeBranch'])->name('store_branch');
     Route::delete('/delete_branch', [DashboardController::class, 'deleteBranch'])->name('delete_branch');
-    Route::put('/branch/{uid}', [DashboardController::class, 'updateBranch'])->name('updateBranch');
+    Route::put('/branch/{branchId}', [DashboardController::class, 'updateBranch'])->name('updateBranch');
     Route::get('/branch/{branchId}/edit', [DashboardController::class, 'editBranch'])->name('editBranch');
     Route::get('/profile', [DashboardController::class, 'profile'])->name('profile');
     Route::put('/profile/{uid}', [DashboardController::class, 'updateProfile'])->name('updateProfile');

@@ -64,7 +64,6 @@ class FirebaseAuthController extends Controller
                     "image" => $image,
                     "title" => $title,
                     "license" => $license,
-                    "patients" => [""],
                     "rate" => 0.0,
                     "rateNo" => 0,
                     "appointments" => [""],
@@ -73,7 +72,6 @@ class FirebaseAuthController extends Controller
                     "finished" => 0,
                     "cancelled" => 0,
                     "age" => $age,
-                    "branches" => [""],
                     "uid" => $result->uid,
                     "email"=>$result->email
                 ];
@@ -84,7 +82,7 @@ class FirebaseAuthController extends Controller
 
                 $request->session()->put('uid' , $result->uid);
 
-                $this->database->getReference('doctors')->push($user);
+                $this->database->getReference('doctors')->getChild($result->uid)->set($user);
 
                 return redirect()->route('dashboard.index');
             } catch (\Throwable $th) {

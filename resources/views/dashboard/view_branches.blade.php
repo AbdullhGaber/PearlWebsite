@@ -22,7 +22,7 @@
                 </thead>
                 <tbody>
                     @if ($branches)
-                        @foreach ($branches as $branchKey => $branch)
+                        @foreach($branches as $branch)
                             <tr>
                                 <td>{{ $branch['branch_type'] }}</td>
                                 <td>{{ $branch['branch_name'] }}</td>
@@ -32,7 +32,7 @@
                                 <td>{{ $branch['commercial_registration_number'] }}</td>
                                 <td>{{ $branch['tax_id_number'] }}</td>
                                 <td>
-                                    <a href="{{ route('dashboard.editBranch', ['branchId' => $branchKey]) }}">
+                                    <a href="{{ route('dashboard.editBranch', ['branchId' => $branch['id']]) }}">
                                         <i class="fa-solid fa-pen-to-square text-primary"></i>
                                     </a>
                                 </td>
@@ -40,7 +40,7 @@
                                     <form action="{{ route('dashboard.delete_branch') }}" method="POST">
                                         @csrf
                                         @method('DELETE')
-                                        <input type="hidden" name="branch_id" value="{{ $branchKey }}">
+                                        <input type="hidden" name="branch_id" value="{{ $branch['id'] }}">
                                         <button type="submit" class="btn-delete" style="border: none; background: none; padding: 0;">
                                             <i class="fa-solid fa-trash text-danger"></i>
                                         </button>

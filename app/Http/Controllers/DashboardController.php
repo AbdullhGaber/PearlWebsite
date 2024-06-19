@@ -41,7 +41,17 @@ class DashboardController extends Controller
 
     public function patients()
     {
-        return view('dashboard.patients');
+        $uid = Session::get('uid');
+        $patientsSnapshot = $this->database->getReference('doctors')->getChild($uid)->
+        getChild('patients')->getSnapshot();
+
+        if($patientsSnapshot->exists()){
+            $patients = $this->database->getReference('doctors')->getChild($uid)->
+            getChild('patients')->getValue();
+            return view('dashboard.patients')->with('patients' , $patients);
+        }else{
+            return view('dashboard.patients');
+        }
     }
 
     public function addBranch()
@@ -56,7 +66,9 @@ class DashboardController extends Controller
     public function storeBranch(Request $request)
     {
         $uid = Session::get('uid');
+
         $branch = [
+            'id' => 1,
             'branch_type' => $request->branch_type,
             'branch_name' => $request->branch_name,
             'government' => $request->government,
@@ -68,11 +80,21 @@ class DashboardController extends Controller
         ];
 
         // Adding a branch to the branches list
-        $users = $this->database->getReference('doctors')->orderByChild('uid')->equalTo($uid)->getSnapshot()->getValue();
-        foreach ($users as $key => $user) {
-            $this->database->getReference('doctors/' . $key . '/branches')->push($branch);
-            break;
+        $userRef = $this->database->getReference('doctors')->getChild($uid);
+
+        $isBranchesExisted = $userRef->getChild("branches")->getSnapshot()->exists();
+
+        if($isBranchesExisted){
+            $branches = $userRef->getChild("branches")->getValue();
+            $id = sizeof($branches) + 1;
+            $branch['id'] = $id;
+            array_push($branches , $branch);
+        }else{
+            $branches = [];
+            $branches[0] = $branch;
         }
+
+        $userRef->getChild("branches")->set($branches);
 
         return redirect()->route('dashboard.view_branches')->with('status', 'Branch added successfully!');
     }
@@ -80,31 +102,29 @@ class DashboardController extends Controller
     public function viewBranches()
     {
         $uid = Session::get('uid');
-        $users = $this->database->getReference('doctors')->orderByChild('uid')->equalTo($uid)->getSnapshot()->getValue();
-        foreach ($users as $key => $user) {
-            $branches = $this->database->getReference('doctors/' . $key . '/branches')->getValue();
-            return view('dashboard.view_branches')->with('branches', $branches);
-        }
+        $branches = $this->database->getReference('doctors')->getChild($uid)->getChild("branches")->getValue();
+        return view('dashboard.view_branches')->with('branches', $branches);
+
     }
 
 
     public function editBranch(string $branchId)
     {
         $uid = Session::get('uid');
-        $users = $this->database->getReference('doctors')->orderByChild('uid')->equalTo($uid)->getSnapshot()->getValue();
-        foreach ($users as $key => $user) {
-            $branchData = $this->database->getReference('doctors/' . $key . '/branches/' . $branchId)->getValue();
-            return view('dashboard.branch', [
-                'branchData' => $branchData,
-                'branchId' => $branchId
-            ]);
+        $branches = $this->database->getReference('doctors')->getChild($uid)->getChild("branches")->getValue();
+        foreach($branches as $branch){
+            if($branch['id'] == $branchId){
+                return view('dashboard.edit_branch')->with('branch' , $branch);
+            }
         }
     }
 
-    public function updateBranch(Request $request, string $branchId)
+    public function updateBranch(Request $request, $branchId)
     {
         $uid = Session::get('uid');
+
         $updatedBranch = [
+            'id' => $branchId,
             'branch_type' => $request->branch_type,
             'branch_name' => $request->branch_name,
             'government' => $request->government,
@@ -115,11 +135,11 @@ class DashboardController extends Controller
             'credit_card_number' => $request->credit_card_number
         ];
 
-        $users = $this->database->getReference('doctors')->orderByChild('uid')->equalTo($uid)->getSnapshot()->getValue();
-        foreach ($users as $key => $user) {
-            $this->database->getReference('doctors/' . $key . '/branches/' . $branchId)->update($updatedBranch);
-            break;
-        }
+        $branches = $this->database->getReference('doctors')->getChild($uid)->getChild('branches')->getValue();
+
+        array_push($branches , $updatedBranch);
+
+        $this->database->getReference('doctors')->getChild($uid)->getChild('branches/'.$branchId - 1)->set($updatedBranch);
 
         return redirect()->route('dashboard.view_branches')->with('status', 'Branch updated successfully!');
     }
@@ -127,13 +147,11 @@ class DashboardController extends Controller
     public function deleteBranch(Request $request)
     {
         $uid = Session::get('uid');
+
         $branchId = $request->branch_id;
 
-        $users = $this->database->getReference('doctors')->orderByChild('uid')->equalTo($uid)->getSnapshot()->getValue();
-        foreach ($users as $key => $user) {
-            $this->database->getReference('doctors/' . $key . '/branches/' . $branchId)->remove();
-            break;
-        }
+       $this->database->getReference('doctors')->getChild($uid)->
+       getChild('branches/'.$branchId - 1)->remove();
 
         return redirect()->route('dashboard.view_branches')->with('status', 'Branch deleted successfully!');
     }
