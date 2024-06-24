@@ -8,7 +8,7 @@
             <li><a href="{{ route('dashboard.index') }}">Summary</a></li>
             <li><a href="{{ route('dashboard.schedule') }}">Schedule</a></li>
             <li><a href="{{ route('dashboard.messages') }}">Messages</a></li>
-            <li><a href="{{ route('dashboard.patients') }}">Patients</a></li>
+            <li><a href="{{ route('patients.patients') }}">Patients</a></li>
             <li class="nav-item">
                 <a data-bs-toggle="collapse" class="nav-link" href="#collapseBranch"><i class="fas fa-plus"></i> Branches</a>
             </li>
@@ -16,11 +16,11 @@
             <ul class="collapse nav" id="collapseBranch">
 
                 <li class="nav-item">
-                    <a class="nav-link " href="{{ route('dashboard.add_branch') }}" style="margin-left:100px"> New branch</a>
+                    <a class="nav-link " href="{{ route('branches.add_branch') }}" style="margin-left:100px"> New branch</a>
                 </li>
 
                 <li class="nav-item">
-                    <a class="nav-link  " href="{{ route('dashboard.view_branches') }}" style="margin-left:100px"> view Branch</a>
+                    <a class="nav-link  " href="{{ route('branches.view_branches') }}" style="margin-left:100px"> view Branch</a>
                 </li>
 
         </ul>

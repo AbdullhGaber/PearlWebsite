@@ -32,12 +32,12 @@
                                 <td>{{ $branch['commercial_registration_number'] }}</td>
                                 <td>{{ $branch['tax_id_number'] }}</td>
                                 <td>
-                                    <a href="{{ route('dashboard.editBranch', ['branchId' => $branch['id']]) }}">
+                                    <a href="{{ route('branches.editBranch', ['branchId' => $branch['id']]) }}">
                                         <i class="fa-solid fa-pen-to-square text-primary"></i>
                                     </a>
                                 </td>
                                 <td>
-                                    <form action="{{ route('dashboard.delete_branch') }}" method="POST">
+                                    <form action="{{ route('branches.delete_branch') }}" method="POST">
                                         @csrf
                                         @method('DELETE')
                                         <input type="hidden" name="branch_id" value="{{ $branch['id'] }}">

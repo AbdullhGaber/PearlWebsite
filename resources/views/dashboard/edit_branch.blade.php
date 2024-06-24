@@ -3,7 +3,7 @@
     <div class="content container">
         <div class="contenttWrapper">
             <h2>Edit Branch</h2>
-            <form class="newForm" method="POST" action="{{ route('dashboard.updateBranch', $branch['id']) }}">
+            <form class="newForm" method="POST" action="{{ route('branches.updateBranch', $branch['id']) }}">
                 @csrf
                 @method('PUT')
                 <div class="formGroup">

@@ -3,7 +3,7 @@
     <div class="content container">
         <div class="contenttWrapper">
             <h2>Welcome Dr/ {{ $user['firstName'] }}</h2>
-            <form class="newForm" method="POST" action="{{ route('dashboard.store_branch') }}">
+            <form class="newForm" method="POST" action="{{ route('branches.store_branch') }}">
                 @csrf
                 <div class="formGroup">
                     <label for="bType">Branch Type</label>
